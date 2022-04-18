@@ -10,7 +10,7 @@ module.exports = {
   testPathIgnorePatterns: ['<rootDir>/node_modules/'],
   testEnvironment: 'jsdom',
   transform: {
-    '.+\\.(ts)$': 'ts-jest',
+    '.+\\.(ts|tsx)$': 'ts-jest',
   },
   moduleNameMapper: {
     '@/tests/(.*)': '<rootDir>/tests/$1',

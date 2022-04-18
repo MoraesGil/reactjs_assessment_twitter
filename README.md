@@ -1,6 +1,8 @@
 # Boiler typescript
 a boiler plate to start a project with 
 eslint airbnb, prettier, typescript and jest
+
+<!-- https://onstrider.notion.site/Strider-Web-Front-end-Assessment-2-2-f21fa667f85642709f3c618ed128c6d2 -->
  
 **Home Page** 
 - [ ]  The homepage, by default, will show a feed of all posts (including reposts and quote posts)
