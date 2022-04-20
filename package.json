@@ -16,12 +16,16 @@
   },
   "dependencies": {
     "@emotion/react": "^11.9.0",
+    "@types/styled-components": "^5.1.25",
     "express": "^4.17.1",
     "express-history-api-fallback": "^2.2.1",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
+    "react-inlinesvg": "^3.0.0",
     "react-router-dom": "^6.3.0",
-    "react-sticky-box": "^1.0.2"
+    "react-sticky-box": "^1.0.2",
+    "styled-components": "^5.3.5",
+    "styled-icons": "^10.45.0"
   },
   "devDependencies": {
     "@babel/plugin-syntax-jsx": "^7.16.7",
