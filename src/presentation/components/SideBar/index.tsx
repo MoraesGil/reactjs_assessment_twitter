@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 import React from 'react';
 import StickyBox from 'react-sticky-box';
 
@@ -22,7 +23,7 @@ const SideBar: React.FC = () => {
                         elements={[
                             <FollowSuggestion name="Johny Cadeiro" nickname="@Johnycadeiro" />,
                             <FollowSuggestion name="Elon Musk" nickname="@elonmusk" />,
-                            <FollowSuggestion name="Spider Morales" nickname="@pidermorales" />,
+                            <FollowSuggestion name="Miles Morales" nickname="@milesmorales" />,
                         ]}
                     />
                     <List
