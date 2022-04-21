@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import Feed from '../Feed';
-
+import Modal from 'react-modal';
 import {
     Container,
+    Header,
+    BackIcon,
+    ProfileInfo,
     Banner,
     Avatar,
     ProfileData,
@@ -11,47 +14,74 @@ import {
     CakeIcon,
     Followage,
     EditButton,
+    ProfileModalStyleObject,
 } from './styles';
 
 const ProfilePage: React.FC = () => {
+    const [modalIsOpen, setIsOpen] = useState(false);
+
+    const handleOpenModal = () => {
+        setIsOpen(true);
+    };
+
+    const handleCloseModal = () => {
+        setIsOpen(false);
+    };
+
     return (
         <Container>
-            <Banner>
-                <Avatar />
-            </Banner>
+            <Modal
+                preventScroll={modalIsOpen}
+                onRequestClose={handleCloseModal}
+                isOpen={modalIsOpen}
+                style={ProfileModalStyleObject}
+            >
+                <Header>
+                    <button onClick={() => handleCloseModal()}>
+                        <BackIcon />
+                    </button>
 
-            <ProfileData>
-                <EditButton outlined>Edit profile</EditButton>
+                    <ProfileInfo>
+                        <strong>Gilberto Moraes</strong>
+                        <span>612 Tweets</span>
+                    </ProfileInfo>
+                </Header>
 
-                <h1>Gilberto Moraes</h1>
-                <h2>@moraesgil2</h2>
+                <Banner>
+                    <Avatar />
+                </Banner>
 
-                <p>
-                    Frontend Developer at <a href="https://www.indeed.com/">@indeed</a>
-                </p>
+                <ProfileData>
+                    <EditButton outlined>Edit profile</EditButton>
 
-                <ul>
-                    <li>
-                        <LocationIcon />
-                        São Paulo, Brazil
-                    </li>
-                    <li>
-                        <CakeIcon />
-                        Birth date · December 24, 1990
-                    </li>
-                </ul>
+                    <h1>Gilberto Moraes</h1>
+                    <h2>@moraesgil2</h2>
 
-                <Followage>
-                    <span>
-                        Following <strong>94</strong>
-                    </span>
-                    <span>
-                        <strong>672 </strong> Followers
-                    </span>
-                </Followage>
-            </ProfileData>
+                    <p>
+                        Frontend Developer at <a href="https://www.indeed.com/">@indeed</a>
+                    </p>
 
-            <Feed />
+                    <ul>
+                        <li>
+                            <LocationIcon />
+                            São Paulo, Brazil
+                        </li>
+                        <li>
+                            <CakeIcon />
+                            Birth date · December 24, 1990
+                        </li>
+                    </ul>
+
+                    <Followage>
+                        <span>
+                            Following <strong>94</strong>
+                        </span>
+                        <span>
+                            <strong>672 </strong> Followers
+                        </span>
+                    </Followage>
+                </ProfileData>
+            </Modal>
         </Container>
     );
 };
