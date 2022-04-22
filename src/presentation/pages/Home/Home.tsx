@@ -1,7 +1,15 @@
+import Layout from '@/presentation/components/Layout';
+import GlobalStyles from '@/presentation/styles/GlobalStyles';
 import React from 'react';
 
 const Home: React.FC = () => {
-    return <div> Hello World</div>;
+    return (
+        <>
+            <Layout />
+
+            <GlobalStyles />
+        </>
+    );
 };
 
 export default Home;
