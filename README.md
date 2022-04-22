@@ -2,6 +2,9 @@
 a boiler plate to start a project with 
 eslint airbnb, prettier, typescript and jest
 
+UI Twitter reference course:
+https://www.youtube.com/watch?v=K-8z_4xvT3o
+
 <!-- https://onstrider.notion.site/Strider-Web-Front-end-Assessment-2-2-f21fa667f85642709f3c618ed128c6d2 -->
  
 **Home Page** 
