@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
-
-import Feed from '../Feed';
+import React from 'react';
 import Modal from 'react-modal';
+import { useProfileModal } from '../../hooks/useProfileModal';
 import {
     Container,
     Header,
@@ -18,22 +17,14 @@ import {
 } from './styles';
 
 const ProfilePage: React.FC = () => {
-    const [modalIsOpen, setIsOpen] = useState(false);
-
-    const handleOpenModal = () => {
-        setIsOpen(true);
-    };
-
-    const handleCloseModal = () => {
-        setIsOpen(false);
-    };
+    const { modalState, handleCloseModal } = useProfileModal();
 
     return (
         <Container>
             <Modal
-                preventScroll={modalIsOpen}
+                preventScroll={modalState}
                 onRequestClose={handleCloseModal}
-                isOpen={modalIsOpen}
+                isOpen={modalState}
                 style={ProfileModalStyleObject}
             >
                 <Header>

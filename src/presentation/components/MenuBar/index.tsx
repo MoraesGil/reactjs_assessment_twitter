@@ -1,3 +1,4 @@
+import { useProfileModal } from '@/presentation/hooks/useProfileModal';
 import React from 'react';
 
 import Button from '../Button';
@@ -19,6 +20,7 @@ import {
 } from './styles';
 
 const MenuBar: React.FC = () => {
+    const { handleOpenModal } = useProfileModal();
     return (
         <Container>
             <Topside>
@@ -44,7 +46,7 @@ const MenuBar: React.FC = () => {
                     <span>Bookmarks</span>
                 </MenuButton>
 
-                <MenuButton>
+                <MenuButton onClick={() => handleOpenModal()}>
                     <ProfileIcon />
                     <span>Profile</span>
                 </MenuButton>
@@ -57,7 +59,7 @@ const MenuBar: React.FC = () => {
             <Botside>
                 <Avatar />
 
-                <ProfileData>
+                <ProfileData onClick={() => handleOpenModal()}>
                     <strong>Gilberto Moraes</strong>
                     <span>@moraesgil2</span>
                 </ProfileData>
