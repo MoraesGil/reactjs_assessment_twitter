@@ -1,5 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import Home from '@/presentation/pages/Home/Home';
 
-ReactDOM.render(<Home />, document.getElementById('main'));
+import { createRoot } from 'react-dom/client';
+const container = document.getElementById('main');
+const root = createRoot(container); // createRoot(container!) if you use TypeScript
+root.render(<Home />);
