@@ -1,3 +1,4 @@
+import { TweetModel } from '@/domain/models/tweet-model';
 import { LoadLocalTweets } from './load-local-tweets';
 
 //SUT === system under test
@@ -10,5 +11,15 @@ describe('LocalLoadTweets', () => {
         const result = await sut.loadAll();
 
         expect(result.length).toBeGreaterThanOrEqual(1);
+    });
+
+    test('Should returns a list of tweets with retweets', async () => {
+        const { sut } = makeSut();
+
+        const result = await sut.loadAll();
+
+        const retweets = result.filter((t: TweetModel) => !!t.retweet);
+
+        expect(retweets.length).toBeGreaterThanOrEqual(1);
     });
 });
