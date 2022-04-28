@@ -30,7 +30,7 @@
       "error",
       {
         "singleQuote": true,
-        "arrowParens": "as-needed",
+        "arrowParens": "always",
         "endOfLine": "auto"
       }
     ],
