@@ -1,22 +1,35 @@
 import faker from 'faker';
 import { LoadTweetList } from '../load-tweets-list';
 
-export const mockTweetModel = (): LoadTweetList.Model => ({
-    id: faker.datatype.number(),
-    user: {
+export const mockMyUser = {
+    id: 111333222,
+    name: 'Gilberto Moraes',
+    username: 'MoraesGil2',
+};
+
+export const mockTweetModel = (): LoadTweetList.Model => {
+    const itsMe = faker.datatype.boolean();
+    return {
         id: faker.datatype.number(),
-        name: faker.internet.userName(),
-        username: faker.internet.userName(),
-    },
-    date: faker.datatype.datetime(),
-    content: faker.lorem.text(),
-    comments: faker.datatype.number({ max: 999 }),
-    retweets: faker.datatype.number({ max: 999 }),
-    hearts: faker.datatype.number({ max: 999 }),
-});
+        following: !itsMe && faker.datatype.boolean(),
+        user: itsMe
+            ? mockMyUser
+            : {
+                  id: faker.datatype.number(),
+                  name: faker.internet.userName(),
+                  username: faker.internet.userName(),
+              },
+        date: faker.datatype.datetime(),
+        content: faker.lorem.text(),
+        comments: faker.datatype.number({ max: 999 }),
+        retweets: faker.datatype.number({ max: 999 }),
+        hearts: faker.datatype.number({ max: 999 }),
+    };
+};
 
 export const mockReTweetModel = (sourceTweet: LoadTweetList.Model): LoadTweetList.Model => ({
     id: faker.datatype.number(),
+    following: faker.datatype.boolean(),
     retweet: sourceTweet,
     user: {
         id: faker.datatype.number(),
@@ -32,6 +45,7 @@ export const mockReTweetModel = (sourceTweet: LoadTweetList.Model): LoadTweetLis
 
 export const mockQuoteTweetModel = (sourceTweet: LoadTweetList.Model): LoadTweetList.Model => ({
     id: faker.datatype.number(),
+    following: faker.datatype.boolean(),
     quoteTweet: sourceTweet,
     user: {
         id: faker.datatype.number(),
@@ -48,7 +62,7 @@ export const mockQuoteTweetModel = (sourceTweet: LoadTweetList.Model): LoadTweet
 export const mockTweetListModel = (): LoadTweetList.Model[] => {
     const sourceTweet = mockTweetModel();
 
-    return [
+    return faker.helpers.shuffle([
         mockQuoteTweetModel(sourceTweet),
         mockReTweetModel(sourceTweet),
         mockTweetModel(),
@@ -57,5 +71,5 @@ export const mockTweetListModel = (): LoadTweetList.Model[] => {
         mockTweetModel(),
         mockTweetModel(),
         mockQuoteTweetModel(sourceTweet),
-    ];
+    ]);
 };
