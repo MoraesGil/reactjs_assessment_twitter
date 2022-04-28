@@ -1,5 +1,5 @@
 import faker from 'faker';
-import { LoadTweetList } from '../load-tweets-list';
+import { LoadTweetList } from '../load-tweet-list';
 
 export const mockMyUser = {
     id: 111333222,
