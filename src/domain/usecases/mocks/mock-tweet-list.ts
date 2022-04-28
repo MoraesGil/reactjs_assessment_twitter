@@ -30,15 +30,32 @@ export const mockReTweetModel = (sourceTweet: LoadTweetList.Model): LoadTweetLis
     hearts: 0,
 });
 
+export const mockQuoteTweetModel = (sourceTweet: LoadTweetList.Model): LoadTweetList.Model => ({
+    id: faker.datatype.number(),
+    quoteTweet: sourceTweet,
+    user: {
+        id: faker.datatype.number(),
+        name: faker.internet.userName(),
+        username: faker.internet.userName(),
+    },
+    date: faker.datatype.datetime(),
+    content: faker.lorem.text(),
+    comments: faker.datatype.number({ max: 5 }),
+    retweets: faker.datatype.number({ max: 5 }),
+    hearts: faker.datatype.number({ max: 5 }),
+});
+
 export const mockTweetListModel = (): LoadTweetList.Model[] => {
-    const retweet = mockTweetModel();
+    const sourceTweet = mockTweetModel();
 
     return [
-        mockReTweetModel(retweet),
+        mockQuoteTweetModel(sourceTweet),
+        mockReTweetModel(sourceTweet),
         mockTweetModel(),
         mockTweetModel(),
-        mockReTweetModel(retweet),
+        mockReTweetModel(sourceTweet),
         mockTweetModel(),
         mockTweetModel(),
+        mockQuoteTweetModel(sourceTweet),
     ];
 };

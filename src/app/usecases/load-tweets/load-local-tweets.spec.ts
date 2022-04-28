@@ -22,4 +22,14 @@ describe('LocalLoadTweets', () => {
 
         expect(retweets.length).toBeGreaterThanOrEqual(1);
     });
+
+    test('Should returns a list of tweets with quoteTweets', async () => {
+        const { sut } = makeSut();
+
+        const result = await sut.loadAll();
+
+        const quoteTweets = result.filter((t: TweetModel) => !!t.quoteTweet);
+
+        expect(quoteTweets.length).toBeGreaterThanOrEqual(1);
+    });
 });
