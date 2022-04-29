@@ -17,19 +17,13 @@ import {
     RetweetIcon,
     LikeIcon,
 } from './styles';
+import { postDateFormat } from '@/utils/date-utils';
 
 type Props = {
     post: LoadTweetList.Model;
 };
 
 const Tweet: React.FC<Props> = ({ post }) => {
-    const postDateFormat = (date: Date) =>
-        date.toLocaleString('en-US', {
-            year: 'numeric',
-            month: 'short',
-            day: 'numeric',
-        });
-
     return (
         <Container role="post">
             {!!post.retweet && (
