@@ -73,3 +73,13 @@ export const mockTweetListModel = (): LoadTweetList.Model[] => {
         mockQuoteTweetModel(sourceTweet),
     ]);
 };
+
+export class LoadTweetListSpy implements LoadTweetList {
+    callsCount = 0;
+    tweets = mockTweetListModel();
+
+    loadAll = (): Promise<LoadTweetList.Model[]> => {
+        this.callsCount++;
+        return Promise.resolve(this.tweets);
+    };
+}

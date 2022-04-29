@@ -1,4 +1,5 @@
 import React from 'react';
+import { LoadTweetList } from '@/domain/usecases';
 
 import {
     Container,
@@ -17,9 +18,13 @@ import {
     LikeIcon,
 } from './styles';
 
-const Tweet: React.FC = () => {
+type Props = {
+    post: LoadTweetList.Model;
+};
+
+const Tweet: React.FC<Props> = ({ post }) => {
     return (
-        <Container>
+        <Container role="post">
             <Retweeted>
                 <RetweetIcon />
                 this is retweet
@@ -36,12 +41,7 @@ const Tweet: React.FC = () => {
                         <time>27 de jun</time>
                     </Header>
 
-                    <Description>
-                        lorem ipsum dolor Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Rerum recusandae officia nesciunt corrupti, optio vero deserunt reiciendis
-                        reprehenderit aspernatur veritatis laborum, dignissimos fugiat quos dolores
-                        quod commodi aperiam! Illum, sint?
-                    </Description>
+                    <Description>{post.content}</Description>
 
                     <ImageContent />
 

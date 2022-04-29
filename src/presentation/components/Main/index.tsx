@@ -1,3 +1,4 @@
+import { LoadTweetListSpy } from '@/domain/usecases/mocks';
 import React from 'react';
 import Feed from '../Feed';
 import ProfilePage from '../ProfilePage';
@@ -7,7 +8,7 @@ const Main: React.FC = () => {
     return (
         <Container>
             <ProfilePage />
-            <Feed />
+            <Feed loadTweetList={new LoadTweetListSpy()} />
         </Container>
     );
 };
