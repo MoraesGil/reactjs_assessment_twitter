@@ -21,9 +21,7 @@ const SideBar: React.FC = () => {
                     <List
                         title="You might like"
                         elements={[
-                            <a href="https://twitter.com/MoraesGil1">
-                                <FollowSuggestion name="MoraesGil" nickname="@MoraesGil1" />
-                            </a>,
+                            <FollowSuggestion name="MoraesGil" nickname="@MoraesGil1" />,
                             <FollowSuggestion name="Elon Musk" nickname="@elonmusk" />,
                             <FollowSuggestion name="Miles Morales" nickname="@milesmorales" />,
                         ]}
