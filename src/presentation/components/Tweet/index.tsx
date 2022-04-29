@@ -23,22 +23,31 @@ type Props = {
 };
 
 const Tweet: React.FC<Props> = ({ post }) => {
+    const postDateFormat = (date: Date) =>
+        date.toLocaleString('en-US', {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric',
+        });
+
     return (
         <Container role="post">
-            <Retweeted>
-                <RetweetIcon />
-                this is retweet
-            </Retweeted>
+            {!!post.retweet && (
+                <Retweeted>
+                    <RetweetIcon />
+                    this is retweet
+                </Retweeted>
+            )}
 
             <Body>
                 <Avatar />
 
                 <Content>
                     <Header>
-                        <strong>Moraes Gil</strong>
-                        <span>@moraesgil</span>
+                        <strong>{post.user.name}</strong>
+                        <span>{post.user.username}</span>
                         <Dot />
-                        <time>27 de jun</time>
+                        <time>{postDateFormat(post.date)}</time>
                     </Header>
 
                     <Description>{post.content}</Description>
@@ -48,15 +57,15 @@ const Tweet: React.FC<Props> = ({ post }) => {
                     <Icons>
                         <Status>
                             <CommentIcon />
-                            18
+                            {post.comments}
                         </Status>
                         <Status>
                             <RetweetIcon />
-                            18
+                            {post.retweets}
                         </Status>
                         <Status>
                             <LikeIcon />
-                            999
+                            {post.hearts}
                         </Status>
                     </Icons>
                 </Content>
