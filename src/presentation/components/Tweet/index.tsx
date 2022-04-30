@@ -1,4 +1,5 @@
 import React from 'react';
+import { LoadTweetList } from '@/domain/usecases';
 
 import {
     Container,
@@ -16,47 +17,49 @@ import {
     RetweetIcon,
     LikeIcon,
 } from './styles';
+import { postDateFormat } from '@/utils/date-utils';
 
-const Tweet: React.FC = () => {
+type Props = {
+    post: LoadTweetList.Model;
+};
+
+const Tweet: React.FC<Props> = ({ post }) => {
     return (
-        <Container>
-            <Retweeted>
-                <RetweetIcon />
-                this is retweet
-            </Retweeted>
+        <Container role="post">
+            {!!post.retweet && (
+                <Retweeted>
+                    <RetweetIcon />
+                    this is retweet
+                </Retweeted>
+            )}
 
             <Body>
                 <Avatar />
 
                 <Content>
                     <Header>
-                        <strong>Moraes Gil</strong>
-                        <span>@moraesgil</span>
+                        <strong>{post.user.name}</strong>
+                        <span>{post.user.username}</span>
                         <Dot />
-                        <time>27 de jun</time>
+                        <time>{postDateFormat(post.date)}</time>
                     </Header>
 
-                    <Description>
-                        lorem ipsum dolor Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Rerum recusandae officia nesciunt corrupti, optio vero deserunt reiciendis
-                        reprehenderit aspernatur veritatis laborum, dignissimos fugiat quos dolores
-                        quod commodi aperiam! Illum, sint?
-                    </Description>
+                    <Description>{post.content}</Description>
 
                     <ImageContent />
 
                     <Icons>
                         <Status>
                             <CommentIcon />
-                            18
+                            {post.comments}
                         </Status>
                         <Status>
                             <RetweetIcon />
-                            18
+                            {post.retweets}
                         </Status>
                         <Status>
                             <LikeIcon />
-                            999
+                            {post.hearts}
                         </Status>
                     </Icons>
                 </Content>
