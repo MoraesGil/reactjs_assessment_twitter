@@ -1,10 +1,11 @@
 const { DefinePlugin } = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { merge } = require('webpack-merge');
 const common = require('./webpack.common');
 
 module.exports = merge(common, {
-    mode: 'development',
+    mode: 'production',
     module: {
         rules: [
             {
@@ -16,7 +17,7 @@ module.exports = merge(common, {
                 test: /\.scss$/,
                 use: [
                     {
-                        loader: 'style-loader',
+                        loader: MiniCssExtractPlugin.loader,
                     },
                     {
                         loader: 'css-loader',
@@ -31,23 +32,20 @@ module.exports = merge(common, {
             },
         ],
     },
-    devtool: 'inline-source-map',
-    devServer: {
-        devMiddleware: {
-            writeToDisk: true,
-        },
-        static: {
-            directory: './public',
-        },
-        historyApiFallback: true,
-        port: 8080,
+    externals: {
+        react: 'React',
+        'react-dom': 'ReactDOM',
     },
     plugins: [
         new DefinePlugin({
-            'process.env.API_URL': JSON.stringify('http://sample.com/api'),
+            'process.env.API_URL': JSON.stringify('https://sample-prod.com/api'),
         }),
         new HtmlWebpackPlugin({
-            template: './template.dev.html',
+            favicon: './public/favicon.png',
+            template: './template.prod.html',
+        }),
+        new MiniCssExtractPlugin({
+            filename: 'main-bundle-[hash].css',
         }),
     ],
 });
