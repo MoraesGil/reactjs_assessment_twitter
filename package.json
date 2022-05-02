@@ -4,7 +4,7 @@
   "scripts": {
     "start": "npm run build && node index",
     "dev:base": "webpack-dev-server --config webpack.dev.js",
-    "dev": "npm run dev:base -- --open",
+    "start:dev": "npm run dev:base -- --open",
     "build": "webpack --config webpack.prod.js",
     "lint": "eslint **/**/*.{ts}",
     "lint:fix": "npm run lint -- --fix --no-error-on-unmatched-pattern",
